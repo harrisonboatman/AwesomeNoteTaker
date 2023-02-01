@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "heroku": "^7.67.2"
+    "express": "^4.16.4"
   }
 }
