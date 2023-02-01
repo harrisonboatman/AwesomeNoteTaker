@@ -1,7 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils')
+const { readFromFile, readAndAppend } = require('../Develop/helpers/fsUtils')
+const uuid = require ('../Develop/helpers/uuid')
 
 const PORT = 3001;
 
@@ -26,7 +27,23 @@ app.get('/api/notes', (req, res) =>{
 });
 
 app.post('/api/notes', (req,res) => {
-    
+    const { title, text } = req.body;
+
+    if ( title && text) {
+        const newNote = {
+            title,
+            text,
+            note_id: uuid()
+        };
+        readAndAppend(newNote, './db/db.json');
+        const response = {
+            status: 'success',
+            body: newNote
+        };
+        res.json(response);
+    } else {
+        res.json('Error in posting new note')
+    }
 })
 
 app.listen(PORT, () => {
