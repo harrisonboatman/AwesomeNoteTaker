@@ -1,8 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
-const { readFromFile, readAndAppend } = require('../Develop/helpers/fsUtils')
-const uuid = require ('../Develop/helpers/uuid')
+const { readFromFile, readAndAppend } = require('./helpers/fsUtils')
+const uuid = require ('./helpers/uuid')
 
 const PORT = 3001;
 
